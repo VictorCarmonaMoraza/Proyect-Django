@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'sap_db',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'Vcarmona32',
         'HOST': 'localhost',
         'PORT': '5432'
     }
