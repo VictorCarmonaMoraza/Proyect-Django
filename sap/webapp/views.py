@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 def bienvenido(request):
     #Responderemos de momento con un Hola mundo
-    return HttpResponse('Hola mundo desde Django')
+    return render(request,'bienvenido.html')
 
 
 #Metodo de despedia
