@@ -7,4 +7,9 @@ from personas.models import Persona
 def bienvenido(request):
     #Utilizamos nuestro modelo de Persona
      numero_personas = Persona.objects.count()
-     return render(request, 'bienvenido.html', {'numero_personas':numero_personas})
+     #Nos devuelve todos los objetos de tipo persona que tenemos en nuestra BBDD
+     personas = Persona.objects.all()
+     #Pasamos nuestros modelos personas al html
+     return render(request, 'bienvenido.html', {'numero_personas':numero_personas, 'personas': personas})
+
+
