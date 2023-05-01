@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import modelform_factory
 
 from personas.models import Persona
@@ -14,5 +14,16 @@ def detallePersona(request, id):
 PersonaForm = modelform_factory(Persona, exclude=[])
 
 def nuevaPersona(request):
-    formaPersona = PersonaForm()
+    if request.method == 'POST':
+        #Rellenamos el objeto perosna con la data obtenida del formulario. Con esto ya tenemos toda la informacion
+        # en nuestro objeto persona
+        formaPersona = PersonaForm(request.POST)
+        #Validamos el formulario
+        if formaPersona.is_valid():
+            #Insertamos en la BBDD
+            formaPersona.save()
+            return redirect('index')
+    else:
+        formaPersona = PersonaForm()
+
     return render(request, 'personas/nuevo.html', {'formaPersona': formaPersona})
